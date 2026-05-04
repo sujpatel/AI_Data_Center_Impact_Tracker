@@ -60,6 +60,8 @@ fig1 = px.choropleth(
     title="<b>Data Center Density by State (2023)</b>",
     labels={"dc_count": "Data Centers"},
 )
+
+
 fig1.update_layout(
     template="plotly_dark",
     paper_bgcolor="#1e1e2e",
@@ -111,16 +113,19 @@ in_dc = pd.read_sql(
 state_data = in_em.merge(in_dc, on="year")
 
 in_planned = pd.read_sql("SELECT planned_count FROM announcements WHERE state = 'IN'", engine)
+
 in_planned_val = int(in_planned["planned_count"].iloc[0]) if not in_planned.empty else 0
 
 fig, ax1 = plt.subplots(figsize=(12, 500/96))
 ax1.bar(state_data["year"], state_data["co2_million_metric_tons"],
         color=SECONDARY, alpha=0.7, label="CO2 Emissions (MMT)")
 ax1.set_xlabel("Year")
+
 ax1.set_ylabel("CO2 Emissions (million metric tons)", color=SECONDARY)
 ax1.tick_params(axis="y", labelcolor=SECONDARY)
 
 ax2 = ax1.twinx()
+
 ax2.plot(state_data["year"], state_data["dc_count"], color=PRIMARY, marker="o",
          linewidth=2.5, markersize=7.2, label="Data Center Count")
 ax2.set_ylabel("Data Center Count", color=PRIMARY)
@@ -138,6 +143,7 @@ ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left", fontsize=10)
 ax1.set_title("Indiana: CO2 Emissions vs Data Center Growth (2010-2023)\n(Coal-heavy grid + 23 planned data centers)")
 
 add_source(fig)
+
 plt.tight_layout()
 plt.savefig("outputs/emissions_collision.png", dpi=120, facecolor=fig.get_facecolor())
 plt.close()
@@ -155,6 +161,7 @@ x = range(len(emerging))
 bars = ax1.bar(x, emerging["wave_probability"], color=PRIMARY, alpha=0.85, label="Wave Probability")
 
 ax1.set_xticks(x)
+
 ax1.set_xticklabels(emerging["state"], fontsize=12)
 ax1.set_ylabel("Predicted Wave Probability")
 ax1.set_ylim(0, 1)
@@ -179,6 +186,7 @@ add_source(fig)
 plt.tight_layout()
 plt.savefig("outputs/forward_prediction.png", dpi=120, facecolor=fig.get_facecolor())
 plt.close()
+
 print("Chart 4 saved: forward_prediction.png")
 
 
@@ -189,6 +197,7 @@ fig, ax = plt.subplots(figsize=(10, 500/96))
 colors = [PRIMARY if i == len(importance) - 1 else "cornflowerblue" for i in range(len(importance))]
 ax.barh(importance["feature"], importance["importance"], color=colors)
 ax.set_title("Random Forest - What Predicts a Wave State?")
+
 ax.set_xlabel("Feature Importance")
 ax.set_ylabel("")
 ax.grid(True, axis="x")
