@@ -1,4 +1,4 @@
-# run_all.py
+
 # Runs the full pipeline in dependency order: ETL must finish before analysis,
 # and models.py must run before visualize.py because it produces the CSVs Charts 4 and 5 read.
 # Usage: python run_all.py
