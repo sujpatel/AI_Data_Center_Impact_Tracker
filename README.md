@@ -71,9 +71,9 @@ This runs the full pipeline in order: ETL scripts load all data into PostgreSQL,
 
 ## Data Sources
 
-- **EIA SEDS** — Annual state electricity prices and CO2 emissions (2010-2023): https://www.eia.gov/state/seds/
-- **Epoch AI** — Operational dates and MW capacity for 35 major AI data centers: https://epoch.ai
-- **datacentermap.com** — Data center locations by state (scraped, cleaned): https://www.datacentermap.com
+- **EIA SEDS** - Annual state electricity prices and CO2 emissions (2010-2023): https://www.eia.gov/state/seds/
+- **Epoch AI** - Operational dates and MW capacity for 35 major AI data centers: https://epoch.ai
+- **datacentermap.com** - Data center locations by state (scraped, cleaned): https://www.datacentermap.com
 
 
 ## Key Findings
