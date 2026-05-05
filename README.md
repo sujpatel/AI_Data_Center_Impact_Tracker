@@ -2,6 +2,44 @@
 
 Analyzes the effect of AI-driven data center growth on electricity prices and CO2 emissions across US states using EIA SEDS data, difference-in-differences analysis, and a Random Forest classifier.
 
+# Project Structure 
+
+AI_Data_Center_Impact_Tracker/
+├── run_all.py
+├── config.py
+├── requirements.txt
+├── README.md
+├── schema.sql
+├── .env
+├── .gitignore
+├── data/
+│   ├── announcements.csv
+│   ├── co2_all.csv
+│   ├── data_center_timelines.csv
+│   ├── data_centers_clean.csv
+│   ├── data_centers.csv
+│   └── pr_all.csv
+├── etl/
+│   ├── clean_data.py
+│   ├── load_announcements.py
+│   ├── load_db.py
+│   ├── load_dc_yearly.py
+│   ├── load_seds_co2.py
+│   └── load_seds_prices.py
+├── analysis/
+│   ├── models.py
+│   └── visualize.py
+└── outputs/
+    ├── did_results.csv
+    ├── emissions_collision.png
+    ├── feature_importance.csv
+    ├── feature_importance.png
+    ├── forward_prediction.png
+    ├── us_density_map.png
+    ├── wave_predictions.csv
+    └── wave_price_trend.png
+
+
 ## Setup
 
 **1. Install dependencies**
